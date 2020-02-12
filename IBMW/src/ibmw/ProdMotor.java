@@ -9,6 +9,14 @@ package ibmw;
  *
  * @author Diego Simoes
  */
-public class Buffer {
+public class ProdMotor extends Thread  {
+    
+    
+    
+    public void run()
+    {
+    
+        System.out.println("Creacion de motor");
+    }
     
 }

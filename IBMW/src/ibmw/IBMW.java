@@ -11,11 +11,24 @@ package ibmw;
  */
 public class IBMW {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
     
+       ProdRuedas hilo1= new ProdRuedas();
+       ProdParabrisas hilo2= new ProdParabrisas();
+       ProdMotor hilo3= new ProdMotor();
+       Almacen almacen= new Almacen();
+        
+       System.out.println(hilo2.primer());
+        hilo1.start();
+        hilo2.start();
+        hilo3.start();
+        
+        
+        
+        
+        
+       
     }
     
 }

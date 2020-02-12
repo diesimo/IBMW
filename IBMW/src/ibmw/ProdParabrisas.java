@@ -9,25 +9,24 @@ package ibmw;
  *
  * @author Diego Simoes
  */
-public class Productores extends Thread {
+public class ProdParabrisas extends Thread{
     
+    private int n=1;
+    public void run()
+    {
     
-    int [] StoreR = new int[30];
-    int [] StoreP= new int [25];
-    int [] StoreM= new int [15];
+        System.out.println("Creacion parabrisas");
+        n++;
+        System.out.println("N es:"+n);
+        
     
+    }
     
+    public int primer(){
     
-    //Productor Ruedas
-            
+        return n;
+    }
+     
     
-            
-    
-            
-   //Productor Parabrisas
-    
-    
-    
-  //Productor motores
     
 }
