@@ -5,18 +5,30 @@
  */
 package ibmw;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Diego Simoes
  */
 public class ProdMotor extends Thread  {
     
-    
+    ProdParabrisas para= new ProdParabrisas();
     
     public void run()
     {
-    
+    while(true){
         System.out.println("Creacion de motor");
+     
+         
+       
+     
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ProdMotor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       }
     }
-    
 }
