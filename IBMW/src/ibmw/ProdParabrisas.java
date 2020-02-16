@@ -27,7 +27,7 @@ public class ProdParabrisas extends Thread{
         System.out.println("Creacion parabrisas");
              contador++;
             almacen.setStoreP(contador);
-         
+            
         }else   
         {
             
