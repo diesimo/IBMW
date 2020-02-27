@@ -17,6 +17,8 @@ public class Gerente extends Thread  {
    
     static private int hora;
     
+    static private boolean dormir;
+    
     public void run()
     {
         Jefe jefe = new Jefe();
@@ -34,16 +36,23 @@ public class Gerente extends Thread  {
                 setGeren(false);
                 ensa.setContCarL(0);
                 System.out.println("GERENTE NO DURMIENDO----");
+                dormir=false;
             
             }else
             {
                
+               
                 try {
                    // System.out.println("La hora a dormir delg gerentees: "+ (comienzo.getTiempo()/24)*hora);
                     Thread.sleep((comienzo.getTiempo()/24)*hora);
+                     System.out.println("Durmiendo");
+                     dormir=true;
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                
+               
             
             }
             
@@ -71,5 +80,46 @@ public class Gerente extends Thread  {
         return veri;
     
     }
+    
+    public String dormir()
+    {
+        String d;
+        d="durmiendo";
+    
+          return d;
+    }
+    
+    
+     public String despertar()
+    {
+        String d;
+        d="despierto";
+    
+          return d;
+    }
+     
+     
+     
+     public String evaluar()
+     {
+     String h="";
+     
+         if(dormir==false)
+         {
+            h= despertar();
+             
+             
+         } else if(dormir==true)
+         {
+         
+            h= dormir();
+         
+         
+         }
+         
+         return h;
+         
+         
+     }
     
 }

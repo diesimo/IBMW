@@ -48,11 +48,19 @@ public class Interfaz extends javax.swing.JFrame {
         Grupo_1.add(Op_Ca);
         Grupo_1.add(Op_Di);
        
+        Timer timer = new Timer(1, (ActionEvent ae) -> { // Actualizar interfaz cada 1ms (0,001s)
+            this.actualizarInterfaz();
+            
+        });
+        timer.start();
+       
     }
         Jefe j = new Jefe();
         ProdMotor pm = new ProdMotor();
         ProdParabrisas pp = new ProdParabrisas ();
         ProdRuedas pr = new ProdRuedas ();
+           Ensambladores ensa=new Ensambladores();
+           Gerente ge = new Gerente();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -105,7 +113,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
         jLabel2.setText("PICASIMO MOTORS");
 
-        Op_Pro.setText("Productores");
+        Op_Pro.setText("Productores Ruedas");
         Op_Pro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Op_ProActionPerformed(evt);
@@ -143,6 +151,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel6.setText("Motores");
 
         CR.setEditable(false);
+        CR.setBackground(new java.awt.Color(255, 255, 255));
         CR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CRActionPerformed(evt);
@@ -150,6 +159,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         CM.setEditable(false);
+        CM.setBackground(new java.awt.Color(255, 255, 255));
         CM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CMActionPerformed(evt);
@@ -157,6 +167,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         CP.setEditable(false);
+        CP.setBackground(new java.awt.Color(255, 255, 255));
         CP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CPActionPerformed(evt);
@@ -165,6 +176,7 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel7.setText("Disponible en Almacen:");
 
+        DRest.setEditable(false);
         DRest.setBackground(new java.awt.Color(255, 255, 255));
         DRest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +187,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel8.setText("Dias Restantes:");
 
         EsJefe.setEditable(false);
+        EsJefe.setBackground(new java.awt.Color(255, 255, 255));
         EsJefe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EsJefeActionPerformed(evt);
@@ -186,6 +199,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel10.setText("Gerente");
 
         EsGe.setEditable(false);
+        EsGe.setBackground(new java.awt.Color(255, 255, 255));
         EsGe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EsGeActionPerformed(evt);
@@ -218,9 +232,11 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(297, 297, 297)
+                .addGap(101, 101, 101)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(0, 26, Short.MAX_VALUE)
+                .addGap(0, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
@@ -246,7 +262,6 @@ public class Interfaz extends javax.swing.JFrame {
                             .addComponent(Op_Pro)
                             .addComponent(Op_En)
                             .addComponent(Op_Al)
-                            .addComponent(jLabel1)
                             .addComponent(Op_Di)
                             .addComponent(Op_Ca)
                             .addComponent(Consultar))
@@ -284,25 +299,28 @@ public class Interfaz extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel9))
                 .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EsJefe, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EsGe, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(241, 241, 241))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EsJefe, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(EsGe))
+                .addGap(184, 184, 184))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jButton1)))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel7))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(jButton1)))
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(31, 31, 31)))
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Op_Pro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -465,6 +483,40 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
     }
+    public void actualizarInterfaz(){
+        //Actualizar interfaz
+        this.DRest.setText(String.valueOf(j.getDiaD()));
+        this.CR.setText(String.valueOf(ensa.getcsntR()));
+         this.CP.setText(String.valueOf(ensa.getcsntP()));
+          this.CM.setText(String.valueOf(ensa.getcsntM()));
+        this.EsGe.setText(ge.evaluar());
+        this.EsJefe.setText(j.evaluar());
+        
+        
+//        this.mesonPF.setText(String.valueOf(app.getMesonPF().getCantUnidades()));
+//        this.mesonP.setText(String.valueOf(app.getMesonP().getCantUnidades()));
+//        
+//        //Actualizar cocineros y mesoneros
+//        this.cocinerosE.setText(String.valueOf(app.getCantCocinerosE()));
+//        this.cocinerosPF.setText(String.valueOf(app.getCantCocinerosPF()));
+//        this.cocinerosP.setText(String.valueOf(app.getCantCocinerosP()));
+//        this.mesoneros.setText(String.valueOf(app.getCantMesoneros()));
+//        
+//        
+//        
+//        //Actualizar ordenes armadas
+//        this.ordenesAtendidas.setText(String.valueOf(AplicacionRestaurante.getOrdenesArmadas()));
+//        
+//        //Actualizar cronometrador
+//        this.cronometrador.setText(app.getCronometrador().getStatus());
+//        
+//        //Actualizar gerente
+//        this.gerente.setText(app.getGerente().getStatus());
+//                
+//        //Actualizar horas para el cierre 
+//        this.horas.setText(String.valueOf(app.getCronometrador().getContador()));
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

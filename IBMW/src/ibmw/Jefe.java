@@ -18,7 +18,7 @@ public class Jefe extends Thread{
     Ensambladores emsa= new Ensambladores();
     Comienzo comienzo = new Comienzo();
     ProdRuedas r = new ProdRuedas();
-    
+    private static boolean dormir;
     
     
     public void run(){
@@ -44,7 +44,7 @@ public class Jefe extends Thread{
             if(booR==false && booP==true && booM==true)
             {
                System.out.println("Quedan "+ diacant + " dias"); 
-             
+            
              setBooR(true);
              setBooM(true);
              setBooP(true);
@@ -52,13 +52,18 @@ public class Jefe extends Thread{
                             
              
                            try {
+                               dormir=false;
+                               diacant();
                         Thread.sleep(Duradia);
                         System.out.println(" 1 Diaaaa!!!!");
                        
                         
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Jefe.class.getName()).log(Level.SEVERE, null, ex);
+                    
                     }
+                           
+                           
              
                            
              //Cuando el semaforo llegue a 3, se inicializa para saber cuantos dias pasan
@@ -73,20 +78,32 @@ public class Jefe extends Thread{
             }
              
              //Cuando llegue a 0 se inicializa el dia en 
+             dormir=true;
              if(diacant==0)
              {
+                 
+                   try {
+                       
+                       dormir=false;
+                       
+                       
+                       Thread.sleep((comienzo.getTiempo()/24) + ((comienzo.getTiempo()/24)/2));
+                   } catch (InterruptedException ex) {
+                       Logger.getLogger(Jefe.class.getName()).log(Level.SEVERE, null, ex);
+                   }
                  diacant=comienzo.getdDespacho();
                  geren.setGeren(true);
                  
                  
              }
+             
 
             }
             
             
             
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(1);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Jefe.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -172,5 +189,52 @@ public class Jefe extends Thread{
     public  void setBooM(boolean i) {
           booM =i;
     }
+    
+     public String dormir()
+    {
+        String d;
+        d="durmiendo";
+    
+          return d;
+    }
+    
+    
+     public String despertar()
+    {
+        String d;
+        d="despierto";
+    
+          return d;
+    }
+     
+     
+     
+     public String evaluar()
+     {
+     String h="";
+     
+         if(dormir==false)
+         {
+            h= despertar();
+             
+             
+         } else if(dormir==true)
+         {
+         
+            h= dormir();
+         
+         
+         }
+         
+         return h;
+         
+         
+     }
+     
+     public void truee(boolean i)
+     {
+         dormir =i;
+     
+     }
  
 }

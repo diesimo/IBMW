@@ -37,9 +37,9 @@ public class IBMW {
       //Inicializo el dia en que el gerente va a despachar los carros
       comienzo.setdDespacho(7);
       //Cantidad de Productores por cada area
-      comienzo.setiP_Motor(1);
+      comienzo.setiP_Motor(3);
       comienzo.setiP_Rue(3);
-      comienzo.setiP_Para(1);
+      comienzo.setiP_Para(3);
       comienzo.setI_Ensam(2);
       
       
@@ -47,7 +47,7 @@ public class IBMW {
        almacen.comienzo();
        
        //Inicializo la cantidad que durara 1 dia
-       comienzo.setTiempo(1000);
+       comienzo.setTiempo(2000);
        
         jefe.dia(62);
         

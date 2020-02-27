@@ -15,7 +15,7 @@ public class ProdRuedas extends Thread {
    static  private final Semaphore permiso= new Semaphore(0,true);
    private static int n1;
    static private  int n2;
-   static private int contract;
+   static private int contract; // csntidsd de personas trabajando
      Almacen almacen = new Almacen();  
  
     
@@ -84,7 +84,7 @@ public class ProdRuedas extends Thread {
                     
                  
                         //Disminuye los dias 
-                        jefe.diacant();
+                       
                         jefe.setBooP(false);
                         jefe.setBooM(false);
                         jefe.setBooR(false);
@@ -118,6 +118,12 @@ public class ProdRuedas extends Thread {
         permiso.release();
        
     
+    }
+    
+    public int Devol()
+    {
+    
+        return permiso.availablePermits();
     }
     
     

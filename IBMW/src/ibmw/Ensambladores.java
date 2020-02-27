@@ -40,7 +40,7 @@ public class Ensambladores extends Thread {
             for(int i=1;i<=contract;i++)
         
             {
-            if(permisoR.availablePermits()>=(4) && permisoM.availablePermits()>=(1) && permisoP.availablePermits()>=(1))
+            if(permisoR.availablePermits()>=(4*contract) && permisoM.availablePermits()>=(1) && permisoP.availablePermits()>=(1))
             {
                 
                
@@ -144,6 +144,23 @@ public class Ensambladores extends Thread {
         System.out.println("Despachando carros");
     }
    
+    public int getcsntR()
+    {
+    
+        return permisoR.availablePermits();
+    }
+    
+     public int getcsntP()
+    {
+    
+        return permisoP.availablePermits();
+    }
+    
+      public int getcsntM()
+    {
+    
+        return permisoM.availablePermits();
+    }
     
     
 }
