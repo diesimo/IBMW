@@ -14,7 +14,12 @@ import java.util.logging.Logger;
 public class IBMW {
 
     
+//<<<<<<< Updated upstream
     public static void main(String[] args) throws InterruptedException {
+//=======
+   
+        Interfaz n = new Interfaz();
+//>>>>>>> Stashed changes
     
        ProdRuedas hilo1= new ProdRuedas();
        ProdParabrisas hilo2= new ProdParabrisas();

@@ -26,7 +26,7 @@ public class ProdRuedas extends Thread {
       
         Ensambladores emsa = new Ensambladores();
         Jefe jefe = new Jefe();
-        ;
+        
         
     
         while(true)
