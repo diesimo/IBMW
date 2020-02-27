@@ -14,52 +14,71 @@ import java.util.logging.Logger;
 public class IBMW {
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
     
        ProdRuedas hilo1= new ProdRuedas();
        ProdParabrisas hilo2= new ProdParabrisas();
        ProdMotor hilo3= new ProdMotor();
        Ensambladores hilo4 =new Ensambladores();
+       Jefe jefe = new Jefe();
+       Gerente  geren= new Gerente();
+       Almacen almacen = new Almacen();
+       Comienzo comienzo= new Comienzo();
    
-       Almacen almacen= new Almacen();
+      //Inicializo lo maximo de cada alamacen
+      comienzo.setMax_ARue(30);
+      comienzo.setMax_APara(25);
+      comienzo.setMax_AMotor(15);
+      //Inicializo el dia en que el gerente va a despachar los carros
+      comienzo.setdDespacho(7);
+      //Cantidad de Productores por cada area
+      comienzo.setiP_Motor(1);
+      comienzo.setiP_Rue(3);
+      comienzo.setiP_Para(1);
+      comienzo.setI_Ensam(2);
+      
+      
+      //Inicializo la funcion de almacen comienzo
+       almacen.comienzo();
+       
+       //Inicializo la cantidad que durara 1 dia
+       comienzo.setTiempo(1000);
+       
+        jefe.dia(62);
         
-  
-        hilo1.start();
-                        try {
-      
-                        hilo1.sleep(500);
-                     } catch (InterruptedException ex) {
-                         Logger.getLogger(ProdRuedas.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                   
-        hilo3.start();
-         try {
-      
-                        hilo3.sleep(500);
-                     } catch (InterruptedException ex) {
-                         Logger.getLogger(ProdRuedas.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-         
-       hilo2.start();
-       try {
-      
-                        hilo2.sleep(500);
-                     } catch (InterruptedException ex) {
-                         Logger.getLogger(ProdRuedas.class.getName()).log(Level.SEVERE, null, ex);
-                     }
         
+
+       //Iniciando hilos
+        jefe.start();
+        geren.start();
         hilo4.start();
-        try {
-            hilo4.join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(IBMW.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         try {
+        hilo1.start();
+        hilo3.start();
+        hilo2.start();
+
+    
       
-                        hilo4.sleep(500);
-                     } catch (InterruptedException ex) {
-                         Logger.getLogger(ProdRuedas.class.getName()).log(Level.SEVERE, null, ex);
-                     }
+         
+        
+        
+        
+      
+         
+       
+       
+           
+            
+       
+//        try {
+//            hilo4.join();
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(IBMW.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//  hilo4.start();
+//       
+      
+      
+                      
     
         // repeticion de hilo
              

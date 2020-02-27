@@ -8,12 +8,27 @@ package ibmw;
 
 import java.util.concurrent.*;
 public class Almacen {
+     Comienzo comienzo= new Comienzo();
+
+   
+     //Almacen de cada productora
+    static private  int StoreR[]; 
+    static private  int StoreP [];
+    static private  int StoreM [];
     
-
-
-    private static int [] StoreR = new int[30];
-    private static int [] StoreP= new int [25];
-    private static int [] StoreM= new int [15];
+   
+    //funcion que se le asigna el valor maximo a cada almacen
+    public void comienzo()
+    {
+        
+        StoreR = new int[ comienzo.getMax_ARue()];
+        StoreP = new int [comienzo.getMax_APara()];
+        StoreM= new int [comienzo.getMax_AMotor()];
+    
+    
+    
+    }
+    
     
 
     public int getStoreR(int a) {
@@ -53,6 +68,9 @@ public class Almacen {
         System.out.println("Numero: " + StoreR[n] );
     
     }
+    
+ 
+   
 }
    
  

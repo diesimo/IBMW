@@ -14,72 +14,74 @@ import java.util.concurrent.*;
  */
 public class ProdMotor extends Thread  {
     
-   
+   Comienzo comienzo= new Comienzo();
    static private final Semaphore permiso= new Semaphore(0,true);
    static private int n1;
    static private int n2;
-   static private int  contract=3;
+   static private int  contract;
    Almacen almacen= new Almacen();
    
-    @Override
+ 
     public void run()
     {
-     
+      
         Ensambladores emsa = new Ensambladores();
-        
+        Jefe jefe = new Jefe();              
        while(true)
         {
-            
-                 if(permiso.availablePermits()<15){
-                     
-                     System.out.println("Numero n1 de M: " + n1);
-                    for(int i=1;i<=contract;i++)
-                     {
-                          if(n1==15)
-                            {
-                                  n1=0;
-                            }
-                            if(n1<=14)
-                            {
-                                if(almacen.getStoreM(n1)==0)
-                                     {
-                                     generar();
-                                     emsa.addM(1);
-                                      }
-                                 n1++;
-                            }
-                    }
-                     try {
+           contract=comienzo.getiP_Motor();
       
-                        Thread.sleep(500);
-                     } catch (InterruptedException ex) {
-                         Logger.getLogger(ProdRuedas.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                   
-                    if(n1==3)
+            if(jefe.cantCont()==3 && jefe.isBooM()==false)
+            {
+               
+                    if(permiso.availablePermits()<15)
                     {
-                       
-                        
-                        
+
+                       // System.out.println("Numero n1 de M: " + n1);
+                       for(int i=1;i<=contract;i++)
+                       {
+                             if(n1==15)
+                               {
+                                     n1=0;
+                               }
+                               if(n1<=14)
+                               {
+                                   if(almacen.getStoreM(n1)==0)
+                                        {
+                                        generar();
+                                        emsa.addM(1);
+                                         }
+                                    n1++;
+
+
+                               }
+                       }
+
+
                     }
-                   // System.out.println(permiso.availablePermits());
                 
+                
+                  jefe.setBooM(true);
+ 
+                 
+            }else
+                {
                      
-                 }else
-                 {
-                    // System.out.println("Almacen de ruedas lleno");
-                     
+                     jefe.setBooM(true);
+                 try {
+                          
+                        Thread.sleep(10);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ProdRuedas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
                  
-                 }
-        
-                 
-        
-                 
-                 
-                 
+                }
+            
+                
+                      
+       
         }
-       
-       
        
     
     }

@@ -5,10 +5,172 @@
  */
 package ibmw;
 
-/**
- *
- * @author Diego Simoes
- */
-public class Jefe {
+import java.util.concurrent.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class Jefe extends Thread{
+    static private int diacant;
+    static private final Semaphore contador= new Semaphore(0,true);
+    static private boolean booR;
+    static private boolean booP;
+    static private boolean booM;
+    static private int Duradia;
+    Ensambladores emsa= new Ensambladores();
+    Comienzo comienzo = new Comienzo();
+    ProdRuedas r = new ProdRuedas();
     
+    
+    
+    public void run(){
+        
+        
+            setBooR(true);
+             setBooM(true);
+             setBooP(true);
+             //Dia para despacho
+             diacant=comienzo.getdDespacho();
+            // System.out.println("comenzo?////////");
+             
+            Gerente geren = new Gerente();
+        while(true)
+        {
+                
+           
+//            System.out.println(r.getO());
+//             if(r.getO()==1)
+//             {
+//             System.out.println(booR + " "+ booP + " "+ booM);
+//             }
+            if(booR==false && booP==true && booM==true)
+            {
+               System.out.println("Quedan "+ diacant + " dias"); 
+             
+             setBooR(true);
+             setBooM(true);
+             setBooP(true);
+             
+                            
+             
+                           try {
+                        Thread.sleep(Duradia);
+                        System.out.println(" 1 Diaaaa!!!!");
+                       
+                        
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Jefe.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+             
+                           
+             //Cuando el semaforo llegue a 3, se inicializa para saber cuantos dias pasan
+             //mediante el tiempo que esta incorporado en produccion ruedas
+             if(contador.availablePermits()==3)
+            {   
+                System.out.println("Ya pasaron" + comienzo.getdDespacho() + " DIAS");
+                 
+                restCon(3);
+         
+
+            }
+             
+             //Cuando llegue a 0 se inicializa el dia en 
+             if(diacant==0)
+             {
+                 diacant=comienzo.getdDespacho();
+                 geren.setGeren(true);
+                 
+                 
+             }
+
+            }
+            
+            
+            
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Jefe.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        }
+        
+       
+    }
+    
+    
+    public void diacant()
+    {
+        diacant--;
+    
+    }
+//Cantidad de dias
+    public int getDiaD() {
+        return diacant;
+    }
+
+    public void setDiaD(int diaD) {
+        Jefe.diacant = diaD;
+        
+    }
+    //Duracion de dia
+    public void  dia(int dia)
+    {
+    
+        Jefe.Duradia =dia;
+    
+    }
+    
+ // Semaforo contador
+    public void restCon(int i)
+    {
+            try {
+                contador.acquire(i);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Jefe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    
+    }
+    
+  
+    
+
+    public void addCont ()
+    {
+         
+        contador.release();
+    
+    }
+    
+    public int cantCont()
+            
+    {
+        return contador.availablePermits();
+        
+    
+    }
+    //----------------------------------
+
+       // Booleanb de R P M
+    public boolean isBooR() {
+        return booR;
+    }
+
+    public  void setBooR(boolean i) {
+       booR = i;
+    }
+
+    public boolean isBooP() {
+        return booP;
+    }
+
+    public void setBooP(boolean i) {
+       booP =i ;
+    }
+
+    public  boolean isBooM() {
+        return booM;
+    }
+
+    public  void setBooM(boolean i) {
+          booM =i;
+    }
+ 
 }
