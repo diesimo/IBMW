@@ -68,6 +68,7 @@ public class Interfaz extends javax.swing.JFrame {
         ProdRuedas pr = new ProdRuedas ();
         Ensambladores ensa=new Ensambladores();
         Gerente ge = new Gerente();
+        Comienzo comi = new Comienzo();
         int ProTotal = 0;//Productores Totales PRUEBA
         int EnsTotal = 0;//Ensambladores Totales PRUEBA
         int PM=0;
@@ -546,16 +547,16 @@ public class Interfaz extends javax.swing.JFrame {
     private void AddProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProActionPerformed
         //BOTON + DE PRODUCTOR
        if(PMC.isSelected()){
-        if(pm.getContract()!=5){
+        if(pm.getContract()!=comi.getmP_Motor()){
         pm.setContractadd();
        }
       }else if(PRC.isSelected()){
-          if(pr.getContract()!=5){
+          if(pr.getContract()!=comi.getmP_Rue()){
               pr.setContractadd();
         
        }
       }else if(PPC.isSelected()){
-          if(pp.getContract()!=5){
+          if(pp.getContract()!=comi.getmP_Para()){
             pp.setContractadd();
        }
       }
@@ -595,7 +596,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void AddEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEnActionPerformed
         // BOTON + DE ENAMBLADOR
          if(EMC.isSelected()){
-        if(ensa.getContract()!=5){
+        if(ensa.getContract()!=comi.getM_Ensam()){
         ensa.setContractadd();
        }
       

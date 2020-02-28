@@ -10,14 +10,14 @@ public class ProdRuedas extends Thread {
     
     
   
-     Comienzo comienzo= new Comienzo();
+     
     
    static  private final Semaphore permiso= new Semaphore(0,true);
    private static int n1;
    static private  int n2;
    static private int contract; // csntidsd de personas trabajando
      Almacen almacen = new Almacen();  
- 
+  Comienzo comienzo= new Comienzo();
     
    
     public void run()
@@ -25,6 +25,7 @@ public class ProdRuedas extends Thread {
         //Se le da el valor iniciado de contratados
       
         Ensambladores emsa = new Ensambladores();
+       
         Jefe jefe = new Jefe();
           contract=comienzo.getiP_Rue();
         
@@ -42,7 +43,7 @@ public class ProdRuedas extends Thread {
                     
               
                    //Si en el almacen hay espacio menor de 30 entra
-                    if(permiso.availablePermits()<30)
+                    if(permiso.availablePermits()<comienzo.getMax_ARue())
                     {
                        
                         
@@ -57,13 +58,13 @@ public class ProdRuedas extends Thread {
                             //Cuaando n1 ya llegue a 30 este se establecera en 0
                             //para poder verificar en el vector las posciones desde 0 de nuevo
                             //para poder llenar el almacen en los espacio vacios
-                            if(n1==30)
+                            if(n1==comienzo.getMax_ARue())
                             {
                                n1=0;
                             }
                             //Si n1 es menor a 29, entra y simplemente almancena en el almacen
                             // si y solo si este espacio este vacio, es decir, en 0.
-                            if(n1<=29)
+                            if(n1<=(comienzo.getMax_ARue()-1))
                             {
                                 //obtiene el valor de la posicion n1 del almacen
                                 if(almacen.getStoreR(n1)==0)
@@ -147,7 +148,7 @@ public class ProdRuedas extends Thread {
                 
                 //Si  n2 ya esta esta en 29 es porque ya llego a la ultima posicion del almacen
                 //y se reinicia para obtener ruedas de las primeras posiciones
-                 if(n2==29)
+                 if(n2==(comienzo.getMax_ARue()-1))
             {
                 n2=0;
                // ---- System.out.println(" Limite 29");

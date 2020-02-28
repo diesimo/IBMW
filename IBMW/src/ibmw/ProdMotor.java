@@ -36,17 +36,17 @@ public class ProdMotor extends Thread  {
             if(jefe.cantCont()==3 && jefe.isBooM()==false)
             {
                
-                    if(permiso.availablePermits()<15)
+                    if(permiso.availablePermits()<comienzo.getMax_AMotor())
                     {
 
                        
                        for(int i=1;i<=contract;i++)
                        {
-                             if(n1==15)
+                             if(n1==comienzo.getMax_AMotor())
                                {
                                      n1=0;
                                }
-                               if(n1<=14)
+                               if(n1<=(comienzo.getMax_AMotor()-1))
                                {
                                    if(almacen.getStoreM(n1)==0)
                                         {
@@ -113,7 +113,7 @@ public class ProdMotor extends Thread  {
           
             permiso.acquire( cant);
              
-            if(n2==14)
+            if(n2==(comienzo.getMax_AMotor()-1))
             {
                 n2=0;
               
