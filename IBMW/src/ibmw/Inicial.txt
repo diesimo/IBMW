@@ -1,0 +1,9 @@
+Almacen de Ruedas: 30.
+Almacen de Parabrisas: 25.
+Almacen de Motor: 30.
+Dias de despacho: 30.
+Trabajadores Motor: 3.
+Trabajadores Ruedas: 3.
+Trabajadores de Parabrisas: 3.
+Trabajadores de Ensambladores: 2.
+Tiempo que demora un dia: 1000.
