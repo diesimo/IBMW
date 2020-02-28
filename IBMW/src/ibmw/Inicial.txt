@@ -1,13 +1,13 @@
-Almacen de Ruedas: 30.
-Almacen de Parabrisas: 25.
-Almacen de Motor: 30.
-Dias de despacho: 30.
-Trabajadores Motor: 3.
-Trabajadores Ruedas: 3.
-Trabajadores de Parabrisas: 3.
-Trabajadores de Ensambladores: 2.
-Tiempo que demora un dia: 1000.
-Cantidad max de productores de Ruedas: 6.
+Almacen de Ruedas: 0.
+Almacen de Parabrisas: 0.
+Almacen de Motor: 0.
+Dias de despacho: 10.
+Trabajadores Motor: 5.
+Trabajadores Ruedas: 5.
+Trabajadores de Parabrisas: 5.
+Trabajadores de Ensambladores: 6.
+Tiempo que demora un dia: 3000.
+Cantidad max de productores de Ruedas: 8.
 Cantidad max de productores de Parabrisas: 7.
 Cantidad max de productores de Motor: 3.
 Cantidad max de Ensambladores: 5.

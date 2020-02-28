@@ -23,6 +23,7 @@ public class ProdParabrisas extends Thread{
     {
         
         Ensambladores emsa = new Ensambladores();
+       
          Jefe jefe = new Jefe();
           contract=comienzo.getiP_Para(); 
         
@@ -37,16 +38,17 @@ public class ProdParabrisas extends Thread{
           if(jefe.cantCont()==2 && jefe.isBooP()==false)
           {
               
-           if(permiso.availablePermits()<25)
+              
+           if(permiso.availablePermits()<comienzo.getMax_APara())
            {
                
                     for(int i=1;i<=contract;i++)
                     {
-                          if(n1==25)
+                          if(n1==comienzo.getMax_APara())
                             {
                                   n1=0;
                             }
-                            if(n1<=24)
+                            if(n1<=(comienzo.getMax_APara()-1))
                             {
                                 if(almacen.getStoreP(n1)==0)
                                      {
@@ -111,7 +113,7 @@ public class ProdParabrisas extends Thread{
           
             permiso.acquire( cant);
              
-            if(n2==24)
+            if(n2==(comienzo.getMax_APara()-1))
             {
                 n2=0;
            // --- System.out.println(" veintinueve");
