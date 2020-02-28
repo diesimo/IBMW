@@ -26,10 +26,12 @@ public class ProdMotor extends Thread  {
     {
       
         Ensambladores emsa = new Ensambladores();
-        Jefe jefe = new Jefe();              
+        Jefe jefe = new Jefe();      
+        contract=comienzo.getiP_Motor();
+        
        while(true)
         {
-           contract=comienzo.getiP_Motor();
+           
       
             if(jefe.cantCont()==3 && jefe.isBooM()==false)
             {
@@ -37,7 +39,7 @@ public class ProdMotor extends Thread  {
                     if(permiso.availablePermits()<15)
                     {
 
-                       // System.out.println("Numero n1 de M: " + n1);
+                       
                        for(int i=1;i<=contract;i++)
                        {
                              if(n1==15)
@@ -114,7 +116,7 @@ public class ProdMotor extends Thread  {
             if(n2==14)
             {
                 n2=0;
-              // ---  System.out.println(" QUINCEEEE");
+              
             
             }
             
@@ -129,8 +131,14 @@ public class ProdMotor extends Thread  {
    
     }
 
-    public static int getContract() {
+    public int getContract() {
         return contract;
     }
-        
+    
+     public  void setContractadd() {
+       contract++;
+    }
+      public  void setContractdis() {
+       contract--;
+    }
 }

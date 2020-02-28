@@ -24,12 +24,13 @@ public class ProdParabrisas extends Thread{
         
         Ensambladores emsa = new Ensambladores();
          Jefe jefe = new Jefe();
+          contract=comienzo.getiP_Para(); 
         
         while(true)
         {
             
             //Cantidad de productores
-         contract=comienzo.getiP_Para();   
+          
           
          
          //Podra entrar si ya lleva por el segundo dia y clase rueda lo permite 
@@ -128,11 +129,16 @@ public class ProdParabrisas extends Thread{
    
     }
 
-    public static int getContract() {
+    public int getContract() {
         return contract;
     }
 
-
+ public  void setContractadd() {
+       contract++;
+    }
+  public  void setContractdis() {
+       contract--;
+    }
      
     
     

@@ -32,25 +32,13 @@ public class IBMW {
        Archivo archi = new Archivo();
    
     
-
-      archi.LeerTxt("C:\\Users\\the_g\\OneDrive\\Documentos\\Repertorio\\SistemasOperativos\\IBMW\\src\\ibmw\\Inicial.txt");
+        //Se agrega la ruta del archivo TXT llamado inicio
+      archi.LeerTxt("D:\\Repertorio\\SistemasOperativos\\IBMW\\src\\ibmw\\Inicial.txt");
      
-
-     
-  
-      
       //Inicializo la funcion de almacen comienzo
        almacen.comienzo();
      
        
-       
-       
-       //Inicializo la cantidad que durara 1 dia
-       comienzo.setTiempo(1000);
-       
-        
-        
-        
 
        //Iniciando hilos
         jefe.start();

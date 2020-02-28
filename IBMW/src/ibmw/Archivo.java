@@ -15,6 +15,7 @@ public class Archivo {
       int add=1;
      Comienzo comi = new Comienzo();
      String temp ;
+     
     public String LeerTxt(String direccion){ //direccion del archivo
         String texto = "";
         ProdRuedas rue = new ProdRuedas();
@@ -31,26 +32,20 @@ public class Archivo {
             while((bfRead = bf.readLine()) != null){ //se hace el ciclo mientras bfRead tiene datos
          
                 temp=bfRead;
-                 System.out.println(temp);
-                 System.out.println(add);
-                 Llenar();
-                   add++;
-                 
-                    
-                   
-                   
+                revisar(bfRead);
+                 add++;
                  
                
                 //guard el contenido del archivo texto
             }
             
             texto = temp;
-             
+               
             
         }catch(Exception e){
             System.err.println("No se encontro archivo");
         }
-            
+      
       
         return "";
         
@@ -58,7 +53,39 @@ public class Archivo {
     }
     
     
-  public void Llenar()
+    //FUNCION QUE SELECCIONA SOLO LSO NUMEROS DEL TXT "iniciado"
+    
+    public void revisar(String a)
+    {
+   String temp2="";
+ 
+       
+       
+        for(int i=0;i<a.length();i++)
+        {
+         
+           
+            if(Character.isDigit(a.charAt(i)))
+            {
+                
+                    temp2=temp2+a.charAt(i);
+ 
+            }
+            if(a.charAt(i)=='.')
+            {       
+                  
+                    Llenar(temp2);
+                    temp2="";
+            }
+        
+        }
+        
+    
+    
+    }
+    
+ // FUNCION QUE AYUDA A LLENAR LOS DATOS INICIALES 
+  public void Llenar(String i)
     {
         switch(add)
         {
@@ -66,14 +93,14 @@ public class Archivo {
                   {
                      
                      
-                     comi.setMax_ARue(Integer.parseInt(temp));
+                     comi.setMax_ARue(Integer.parseInt(i));
                       
                   }
             case 2:
                   {
                      
                        
-                      comi.setMax_APara(Integer.parseInt(temp));
+                      comi.setMax_APara(Integer.parseInt(i));
                   
                   }
            case 3:
@@ -82,37 +109,43 @@ public class Archivo {
                       
                         
                         
-                      comi.setMax_AMotor(Integer.parseInt(temp));
+                      comi.setMax_AMotor(Integer.parseInt(i));
                   
                   }
             case 4:
                   {
                      
-                      comi.setdDespacho(Integer.parseInt(temp));
+                      comi.setdDespacho(Integer.parseInt(i));
                       
                   }
              case 5:
                   {
-                      comi.setiP_Motor(Integer.parseInt(temp));
+                      comi.setiP_Motor(Integer.parseInt(i));
                   
                   }
              case 6:
                   {
-                        comi.setiP_Rue(Integer.parseInt(temp));
+                        comi.setiP_Rue(Integer.parseInt(i));
       
                   
                   }
              case 7:
                   {
-                      comi.setiP_Para(Integer.parseInt(temp));
+                      comi.setiP_Para(Integer.parseInt(i));
     
                   
                   }
              case 8:
                   {
                   
-                    comi.setI_Ensam(Integer.parseInt(temp));
+                    comi.setI_Ensam(Integer.parseInt(i));
                   }
+             case 9:
+             {
+             
+                 comi.setTiempo(Integer.parseInt(i));
+                 
+             }
         
         }
         

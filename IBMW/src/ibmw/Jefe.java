@@ -14,7 +14,7 @@ public class Jefe extends Thread{
     static private boolean booR;
     static private boolean booP;
     static private boolean booM;
-    static private int Duradia;
+    
     Ensambladores emsa= new Ensambladores();
     Comienzo comienzo = new Comienzo();
     ProdRuedas r = new ProdRuedas();
@@ -29,18 +29,13 @@ public class Jefe extends Thread{
              setBooP(true);
              //Dia para despacho
              diacant=comienzo.getdDespacho();
-            // System.out.println("comenzo?////////");
+         
              
             Gerente geren = new Gerente();
         while(true)
         {
                 
-           
-//            System.out.println(r.getO());
-//             if(r.getO()==1)
-//             {
-//             System.out.println(booR + " "+ booP + " "+ booM);
-//           
+ 
             
             if(booR==false && booP==true && booM==true)
             {
@@ -138,13 +133,6 @@ public class Jefe extends Thread{
     public void setDiaD(int diaD) {
         Jefe.diacant = diaD;
         
-    }
-    //Duracion de dia
-    public void  dia(int dia)
-    {
-    
-        Jefe.Duradia =dia;
-    
     }
     
  // Semaforo contador

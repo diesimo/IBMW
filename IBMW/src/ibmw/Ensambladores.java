@@ -30,17 +30,17 @@ public class Ensambladores extends Thread {
     @Override
     public void run ()
     {
-            
+            contract=comienzo.getI_Ensam();
     
         while(true)
         {
-            //Cantidad de ensalbladores
-            contract=comienzo.getI_Ensam();
+            //Cantidad de ensambladores
+            
            
             for(int i=1;i<=contract;i++)
         
             {
-            if(permisoR.availablePermits()>=(4*contract) && permisoM.availablePermits()>=(1) && permisoP.availablePermits()>=(1))
+            if(permisoR.availablePermits()>=(4) && permisoM.availablePermits()>=(1) && permisoP.availablePermits()>=(1) )
             {
                 
                
@@ -49,7 +49,7 @@ public class Ensambladores extends Thread {
             }
             }
            
-           // System.out.println("Ruedas: " + permisoR.availablePermits() + "Parabrisas: " + permisoP.availablePermits() + "Motor: "+ permisoM.availablePermits());
+          
          try {
                 Thread.sleep(1);
             } catch (InterruptedException ex) {
@@ -164,6 +164,14 @@ public class Ensambladores extends Thread {
 
     public int getContract() {
         return contract;
+    }
+
+    public  void setContractadd() {
+       contract++;
+    }
+    
+     public  void setContractdis() {
+       contract--;
     }
     
       

@@ -26,13 +26,13 @@ public class ProdRuedas extends Thread {
       
         Ensambladores emsa = new Ensambladores();
         Jefe jefe = new Jefe();
-        
+          contract=comienzo.getiP_Rue();
         
     
         while(true)
         {
                 // cantidad de producgtores
-                  contract=comienzo.getiP_Rue();
+                
                   
                   
           // La produccion ruedas llevara el conteo de los dias, ya que es el unico que produce todos los dias
@@ -181,6 +181,18 @@ public class ProdRuedas extends Thread {
     public int getContract() {
         return contract;
     }
+
+    public  void setContractadd() {
+        contract++;
+    }
+    
+    public void setContractdis(){
+    
+    contract--;
+    
+    }
+    
+    
 
      
    }    
