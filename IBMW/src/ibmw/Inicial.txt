@@ -7,3 +7,7 @@ Trabajadores Ruedas: 3.
 Trabajadores de Parabrisas: 3.
 Trabajadores de Ensambladores: 2.
 Tiempo que demora un dia: 1000.
+Cantidad max de productores de Ruedas: 6.
+Cantidad max de productores de Parabrisas: 7.
+Cantidad max de productores de Motor: 3.
+Cantidad max de Ensambladores: 5.

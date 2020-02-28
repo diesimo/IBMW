@@ -20,10 +20,16 @@ public class Comienzo {
     static private int max_ARue;
     static private int max_AMotor;
     
+    
+    //Cantidad Maxima de Productores
+      static private int mP_Para;
+    static private int mP_Rue;
+    static private int mP_Motor;
+    static private int m_Ensam;
  
     
     
-    //Cantidad de productores de cada area
+    //Cantidad inicial de productores de cada area
     static private int iP_Para;
     static private int iP_Rue;
     static private int iP_Motor;
@@ -141,10 +147,47 @@ public class Comienzo {
     public void setI_Ensam(int i_Ensam) {
         this.i_Ensam = i_Ensam;
     }
-    //------------
+    //-----------
+    
     
     
    //-------- (*) -----
+    
+    
+    //Maximo de cada Productor de cada area 
+
+    public  int getmP_Para() {
+        return mP_Para;
+    }
+
+    public  void setmP_Para(int mP_Para) {
+        Comienzo.mP_Para = mP_Para;
+    }
+
+    public int getmP_Rue() {
+        return mP_Rue;
+    }
+
+    public  void setmP_Rue(int mP_Rue) {
+        Comienzo.mP_Rue = mP_Rue;
+    }
+
+    public  int getmP_Motor() {
+        return mP_Motor;
+    }
+
+    public  void setmP_Motor(int mP_Motor) {
+        Comienzo.mP_Motor = mP_Motor;
+    }
+
+    public  int getM_Ensam() {
+        return m_Ensam;
+    }
+
+    public  void setM_Ensam(int m_Ensam) {
+        Comienzo.m_Ensam = m_Ensam;
+    }
+    
    
   
    

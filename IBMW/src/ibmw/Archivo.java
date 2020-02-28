@@ -146,6 +146,30 @@ public class Archivo {
                  comi.setTiempo(Integer.parseInt(i));
                  
              }
+             case 10:
+             {
+                 comi.setmP_Rue(Integer.parseInt(i));
+             
+             
+             }
+             case 11:
+             {
+                 comi.setmP_Para(Integer.parseInt(i));
+             
+             
+             }
+             case 12:
+             {
+                 comi.setmP_Motor(Integer.parseInt(i));
+             
+             
+             }
+             case 13:
+             {
+                 comi.setM_Ensam(Integer.parseInt(i));
+             
+             
+             }
         
         }
         
