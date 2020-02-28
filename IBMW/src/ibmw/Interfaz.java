@@ -46,6 +46,8 @@ public class Interfaz extends javax.swing.JFrame {
         Grupo_1.add(Op_En);
         Grupo_1.add(Op_Al);
         Grupo_1.add(Op_Ca);
+        Grupo_1.add(Op_Mo);
+        Grupo_1.add(Op_Pa);
      
        
         Timer timer = new Timer(1, (ActionEvent ae) -> { // Actualizar interfaz cada 1ms (0,001s)
@@ -59,8 +61,10 @@ public class Interfaz extends javax.swing.JFrame {
         ProdMotor pm = new ProdMotor();
         ProdParabrisas pp = new ProdParabrisas ();
         ProdRuedas pr = new ProdRuedas ();
-           Ensambladores ensa=new Ensambladores();
-           Gerente ge = new Gerente();
+        Ensambladores ensa=new Ensambladores();
+        Gerente ge = new Gerente();
+        int ProTotal = 0;//Productores Totales PRUEBA
+        int EnsTotal = 0;//Ensambladores Totales PRUEBA
            
           
 
@@ -83,7 +87,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Consultar = new javax.swing.JButton();
         Op_Ca = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -105,6 +108,10 @@ public class Interfaz extends javax.swing.JFrame {
         DisPro = new javax.swing.JButton();
         AddEn = new javax.swing.JButton();
         DisEn = new javax.swing.JButton();
+        Op_Pa = new javax.swing.JRadioButton();
+        Op_Mo = new javax.swing.JRadioButton();
+        PTotal = new javax.swing.JTextField();
+        Etotal = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
 
@@ -138,13 +145,6 @@ public class Interfaz extends javax.swing.JFrame {
         Op_Ca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Op_CaActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Leer Archivo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
             }
         });
 
@@ -231,10 +231,40 @@ public class Interfaz extends javax.swing.JFrame {
         });
 
         DisPro.setText("-");
+        DisPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DisProActionPerformed(evt);
+            }
+        });
 
         AddEn.setText("+");
+        AddEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddEnActionPerformed(evt);
+            }
+        });
 
         DisEn.setText("-");
+        DisEn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DisEnActionPerformed(evt);
+            }
+        });
+
+        Op_Pa.setText("Productores Parabrisas");
+
+        Op_Mo.setText("Productores Motores");
+        Op_Mo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Op_MoActionPerformed(evt);
+            }
+        });
+
+        PTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PTotalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -245,7 +275,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(0, 20, Short.MAX_VALUE)
+                .addGap(0, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
@@ -256,13 +286,20 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGap(138, 138, 138))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(DRest, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(DRest, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(115, 115, 115))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EsJefe, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(EsGe))
+                .addGap(184, 184, 184))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(91, 91, 91)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,7 +307,10 @@ public class Interfaz extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Op_Pro)
                             .addComponent(Op_En)
-                            .addComponent(Consultar))
+                            .addComponent(Consultar)
+                            .addComponent(Op_Pa)
+                            .addComponent(Op_Ca)
+                            .addComponent(Op_Al))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -285,6 +325,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addGap(233, 233, 233))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Op_Mo)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -299,66 +340,59 @@ public class Interfaz extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(DisPro, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                                    .addComponent(DisEn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Op_Ca)
+                                    .addComponent(DisEn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Op_Al)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(PTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                                    .addComponent(Etotal))))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(EsJefe, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                    .addComponent(EsGe))
-                .addGap(184, 184, 184))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jButton1)))
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel2)
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(31, 31, 31)))
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Op_Pro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Op_En)
-                    .addComponent(jLabel4)
-                    .addComponent(CR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(CP, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CM, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addComponent(Op_Mo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Op_Ca)
-                            .addComponent(Op_Al))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Consultar))
+                        .addComponent(jLabel7)
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(Op_Pro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Op_Pa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(CR, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(CP, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CM, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74)
-                        .addComponent(jLabel11)))
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(Op_En)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Op_Al)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Op_Ca)
+                        .addGap(37, 37, 37)
+                        .addComponent(Consultar)))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -373,12 +407,14 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(AddPro)
-                    .addComponent(DisPro))
+                    .addComponent(DisPro)
+                    .addComponent(PTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(AddEn)
-                    .addComponent(DisEn))
+                    .addComponent(DisEn)
+                    .addComponent(Etotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DRest, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,28 +436,26 @@ public class Interfaz extends javax.swing.JFrame {
         String mensaje = "";
         
         if(Op_Pro.isSelected()){
-            mensaje = "La cantidad de Productores es: " ;
+            mensaje = "La cantidad de Productores de Ruedas es: " ;
         }else if(Op_En.isSelected()){
             mensaje = "La cantidad de Ensambladores es: " + ensa.getContract();
         }else if(Op_Al.isSelected()){
             mensaje = "La cantiadad de elementos en el almacen es: ";
         }else if(Op_Ca.isSelected()){
             mensaje = "La cantidad de carros listos es: " + ensa.getContCarL();
+        }else if(Op_Mo.isSelected()){
+            mensaje = "La cantidad de Productores de Motores es: es: " + ensa.getContract();
+        }else if(Op_Pa.isSelected()){
+            mensaje = "La cantidad de Productores de Parabrisas es: " + ensa.getContract();
         }else{
             mensaje = "No se selcciono ninguna opcion";
         }
         JOptionPane.showMessageDialog(this, mensaje);
         
         
+        
     }//GEN-LAST:event_ConsultarActionPerformed
  
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Archivo a = new Archivo();
-        a.LeerTxt("C:\\texto\\Hola");
-        JOptionPane.showMessageDialog(this,a);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void CRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CRActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CRActionPerformed
@@ -456,7 +490,11 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_EsGeActionPerformed
 
     private void AddProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProActionPerformed
-        // TODO add your handling code here:
+        //BOTON + DE PRODUCTOR
+       if(ProTotal!=30){
+        ProTotal++;
+       }
+        
     }//GEN-LAST:event_AddProActionPerformed
 
     private void Op_CaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op_CaActionPerformed
@@ -466,6 +504,37 @@ public class Interfaz extends javax.swing.JFrame {
     private void AddProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddProMouseClicked
         Sumar(1);
     }//GEN-LAST:event_AddProMouseClicked
+
+    private void Op_MoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Op_MoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Op_MoActionPerformed
+
+    private void DisProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisProActionPerformed
+        // BOTON - DE PRODUCTOR
+       if(ProTotal!=0){
+        ProTotal--;
+       }
+        
+    }//GEN-LAST:event_DisProActionPerformed
+
+    private void AddEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEnActionPerformed
+        // BOTON + DE ENAMBLADOR
+        if(EnsTotal!=30){
+        EnsTotal++;
+       }
+        
+    }//GEN-LAST:event_AddEnActionPerformed
+
+    private void DisEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisEnActionPerformed
+       //BOTON - DE ENSAMBLADOR
+        if(EnsTotal!=0){
+        EnsTotal--;
+       }
+    }//GEN-LAST:event_DisEnActionPerformed
+
+    private void PTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PTotalActionPerformed
 
     
     public void Sumar(int i)
@@ -515,10 +584,12 @@ public class Interfaz extends javax.swing.JFrame {
         //Actualizar interfaz
         this.DRest.setText(String.valueOf(j.getDiaD()));
         this.CR.setText(String.valueOf(ensa.getcsntR()));
-         this.CP.setText(String.valueOf(ensa.getcsntP()));
-          this.CM.setText(String.valueOf(ensa.getcsntM()));
+        this.CP.setText(String.valueOf(ensa.getcsntP()));
+        this.CM.setText(String.valueOf(ensa.getcsntM()));
         this.EsGe.setText(ge.evaluar());
         this.EsJefe.setText(j.evaluar());
+        this.PTotal.setText(String.valueOf(ProTotal));
+        this.Etotal.setText(String.valueOf(EnsTotal));
         
         
 //        this.mesonPF.setText(String.valueOf(app.getMesonPF().getCantUnidades()));
@@ -559,12 +630,15 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton DisPro;
     private javax.swing.JTextField EsGe;
     private javax.swing.JTextField EsJefe;
+    private javax.swing.JTextField Etotal;
     private javax.swing.ButtonGroup Grupo_1;
     private javax.swing.JRadioButton Op_Al;
     private javax.swing.JRadioButton Op_Ca;
     private javax.swing.JRadioButton Op_En;
+    private javax.swing.JRadioButton Op_Mo;
+    private javax.swing.JRadioButton Op_Pa;
     private javax.swing.JRadioButton Op_Pro;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField PTotal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

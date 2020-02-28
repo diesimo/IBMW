@@ -33,7 +33,7 @@ public class IBMW {
    
     
 
-      archi.LeerTxt("D:\\Repertorio\\SistemasOperativos\\IBMW\\src\\ibmw\\Inicial.txt");
+      archi.LeerTxt("C:\\Users\\the_g\\OneDrive\\Documentos\\Repertorio\\SistemasOperativos\\IBMW\\src\\ibmw\\Inicial.txt");
      
 
      
