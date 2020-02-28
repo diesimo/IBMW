@@ -35,7 +35,7 @@ public class Gerente extends Thread  {
             {
                 setGeren(false);
                 ensa.setContCarL(0);
-                System.out.println("GERENTE NO DURMIENDO----");
+              
                 dormir=false;
             
             }else
@@ -45,7 +45,7 @@ public class Gerente extends Thread  {
                 try {
                    // System.out.println("La hora a dormir delg gerentees: "+ (comienzo.getTiempo()/24)*hora);
                     Thread.sleep((comienzo.getTiempo()/24)*hora);
-                     System.out.println("Durmiendo");
+                     
                      dormir=true;
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);

@@ -99,7 +99,7 @@ public class ProdMotor extends Thread  {
                 
                   
         almacen.setStoreM(n1,1);
-        System.out.println("Se Genero 1 Motor "+ " en la posicon " + n1);
+       // m--- System.out.println("Se Genero 1 Motor "+ " en la posicon " + n1);
         addM();
                
     
@@ -114,12 +114,12 @@ public class ProdMotor extends Thread  {
             if(n2==14)
             {
                 n2=0;
-                System.out.println(" QUINCEEEE");
+              // ---  System.out.println(" QUINCEEEE");
             
             }
             
             almacen.setStoreM(n2,0);
-         System.out.println("Se le quito 1 motor en la posicion: "+ n2);
+        // -- System.out.println("Se le quito 1 motor en la posicion: "+ n2);
             n2++;
             
             
@@ -127,6 +127,10 @@ public class ProdMotor extends Thread  {
             Logger.getLogger(ProdMotor.class.getName()).log(Level.SEVERE, null, ex);
         }
    
+    }
+
+    public static int getContract() {
+        return contract;
     }
         
 }

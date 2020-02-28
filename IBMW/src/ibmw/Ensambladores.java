@@ -71,17 +71,17 @@ public class Ensambladores extends Thread {
    
                 
                 
-                System.out.println("--Inicio");
+                // --System.out.println("--Inicio");
                 //Se le retira 4 ruedas 1 motor y 1 parabrisas, llamando la funcion de preveer a cada clase
                 ruedas.preveerR(4);
                 para.preveerP(1);
                 motor.preveerM(1);
-                System.out.println("--Obteniendo ruedas--");
+              // --  System.out.println("--Obteniendo ruedas--");
                 
-                System.out.println("--Obteniendo motor--");
+               //--- System.out.println("--Obteniendo motor--");
                 
-                System.out.println("--Obteniendo parabrisas--");
-                
+               //-- System.out.println("--Obteniendo parabrisas--");
+                 ContCarL++;
              try {
                  
                  //Se le realiza un acquiare a los semaforos establecidos en esta clase para indicar 
@@ -94,9 +94,9 @@ public class Ensambladores extends Thread {
                     Logger.getLogger(Ensambladores.class.getName()).log(Level.SEVERE, null, ex);
                                                    }
              //contador de carros
-               ContCarL++;
-                System.out.println("Cantidad de carros: " + ContCarL);
-                System.out.println("Final---");
+              
+              // --  System.out.println("Cantidad de carros: " + ContCarL);
+               // -- System.out.println("Final---");
                    try {
                        
                        // el tiempo de ensamblar un carro es 2 dias
@@ -141,7 +141,7 @@ public class Ensambladores extends Thread {
 
     public void setContCarL(int ContCarL) {
         this.ContCarL = ContCarL;
-        System.out.println("Despachando carros");
+       // -- System.out.println("Despachando carros");
     }
    
     public int getcsntR()
@@ -161,6 +161,11 @@ public class Ensambladores extends Thread {
     
         return permisoM.availablePermits();
     }
+
+    public int getContract() {
+        return contract;
+    }
     
+      
     
 }

@@ -29,27 +29,26 @@ public class IBMW {
        Gerente  geren= new Gerente();
        Almacen almacen = new Almacen();
        Comienzo comienzo= new Comienzo();
+       Archivo archi = new Archivo();
    
-      //Inicializo lo maximo de cada alamacen
-      comienzo.setMax_ARue(30);
-      comienzo.setMax_APara(25);
-      comienzo.setMax_AMotor(15);
-      //Inicializo el dia en que el gerente va a despachar los carros
-      comienzo.setdDespacho(7);
-      //Cantidad de Productores por cada area
-      comienzo.setiP_Motor(3);
-      comienzo.setiP_Rue(3);
-      comienzo.setiP_Para(3);
-      comienzo.setI_Ensam(2);
-      
+    
+
+      archi.LeerTxt("D:\\Repertorio\\SistemasOperativos\\IBMW\\src\\ibmw\\Inicial.txt");
+     
+
+     
+  
       
       //Inicializo la funcion de almacen comienzo
        almacen.comienzo();
+     
+       
+       
        
        //Inicializo la cantidad que durara 1 dia
-       comienzo.setTiempo(2000);
+       comienzo.setTiempo(1000);
        
-        jefe.dia(62);
+        
         
         
 

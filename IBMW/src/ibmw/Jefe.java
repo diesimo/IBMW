@@ -40,22 +40,26 @@ public class Jefe extends Thread{
 //             if(r.getO()==1)
 //             {
 //             System.out.println(booR + " "+ booP + " "+ booM);
-//             }
+//           
+            
             if(booR==false && booP==true && booM==true)
             {
-               System.out.println("Quedan "+ diacant + " dias"); 
+                dormir=false;
+              //--- System.out.println("Quedan "+ diacant + " dias"); 
             
              setBooR(true);
              setBooM(true);
              setBooP(true);
+             dormir=false;
              
                             
-             
+               
                            try {
-                               dormir=false;
+                             
                                diacant();
-                        Thread.sleep(Duradia);
-                        System.out.println(" 1 Diaaaa!!!!");
+                             //  System.out.println("Despierto");
+                        Thread.sleep((comienzo.getTiempo()/24) + ((comienzo.getTiempo()/24)/2));
+                        //--System.out.println(" 1 Diaaaa!!!!");
                        
                         
                     } catch (InterruptedException ex) {
@@ -70,7 +74,7 @@ public class Jefe extends Thread{
              //mediante el tiempo que esta incorporado en produccion ruedas
              if(contador.availablePermits()==3)
             {   
-                System.out.println("Ya pasaron" + comienzo.getdDespacho() + " DIAS");
+                //----System.out.println("Ya pasaron" + comienzo.getdDespacho() + " DIAS");
                  
                 restCon(3);
          
@@ -78,29 +82,37 @@ public class Jefe extends Thread{
             }
              
              //Cuando llegue a 0 se inicializa el dia en 
-             dormir=true;
+             
              if(diacant==0)
              {
                  
                    try {
                        
-                       dormir=false;
+                    
                        
-                       
+                        geren.setGeren(true);
                        Thread.sleep((comienzo.getTiempo()/24) + ((comienzo.getTiempo()/24)/2));
+                        
                    } catch (InterruptedException ex) {
                        Logger.getLogger(Jefe.class.getName()).log(Level.SEVERE, null, ex);
                    }
-                 diacant=comienzo.getdDespacho();
-                 geren.setGeren(true);
-                 
+                   diacant=comienzo.getdDespacho();
+                
+                
+                   
                  
              }
+           
              
 
             }
             
+              dormir=true;
             
+          
+            
+          
+                        
             
                 try {
                     Thread.sleep(1);

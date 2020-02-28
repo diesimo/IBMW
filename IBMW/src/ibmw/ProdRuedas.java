@@ -38,7 +38,7 @@ public class ProdRuedas extends Thread {
           // La produccion ruedas llevara el conteo de los dias, ya que es el unico que produce todos los dias
                 if(jefe.isBooR()==true && jefe.isBooP()==true && jefe.isBooM()==true && jefe.cantCont()<3)
                 {
-                    System.out.println("Comenzo");
+                   // -- System.out.println("Comenzo");
                     
               
                    //Si en el almacen hay espacio menor de 30 entra
@@ -53,7 +53,7 @@ public class ProdRuedas extends Thread {
                         {
                             
                             
-                            System.out.println("Entro en R");
+                           // -- System.out.println("Entro en R");
                             //Cuaando n1 ya llegue a 30 este se establecera en 0
                             //para poder verificar en el vector las posciones desde 0 de nuevo
                             //para poder llenar el almacen en los espacio vacios
@@ -90,19 +90,25 @@ public class ProdRuedas extends Thread {
                         jefe.setBooR(false);
                      
                         
-                        System.out.println(jefe.isBooR()+ " "+ jefe.isBooP() + " "+ jefe.isBooM());
+                       // --- System.out.println(jefe.isBooR()+ " "+ jefe.isBooP() + " "+ jefe.isBooM());
                         //Realiza un release al semaforo de  jefe para saber el dia pasado
                         jefe.addCont();
                         try {
                         //Duerme al hilo 
+                       
+                    
+                       
                          Thread.sleep(comienzo.getTiempo());
+                          
+                        
+                         
                  
                         } catch (InterruptedException ex) {
                             Logger.getLogger(ProdRuedas.class.getName()).log(Level.SEVERE, null, ex);
                         }
                 }  
-                 
-                       
+                
+                   
        
             }
         
@@ -144,13 +150,13 @@ public class ProdRuedas extends Thread {
                  if(n2==29)
             {
                 n2=0;
-                System.out.println(" Limite 29");
+               // ---- System.out.println(" Limite 29");
             
             }
                  // Pone en 0 la posicion asignada por n2 para indicar que fue retirado una rueda 
                  // en esa poision y que esta disponible dicha posicion para llenar de nuevo
             almacen.setStoreR(n2,0);
-            System.out.println("Se le quito 1 Rueda: " + " posicion: "+ n2);
+           //-----System.out.println("Se le quito 1 Rueda: " + " posicion: "+ n2);
             n2++;
             } 
             
@@ -166,7 +172,7 @@ public class ProdRuedas extends Thread {
          
          
          almacen.setStoreR(n1,1);
-        System.out.println("Se Genero 1 Rueda en la posicon " + n1); 
+       // ---- System.out.println("Se Genero 1 Rueda en la posicon " + n1); 
          addR();
                    
     

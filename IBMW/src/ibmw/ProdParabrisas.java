@@ -97,7 +97,7 @@ public class ProdParabrisas extends Thread{
                 
                   
         almacen.setStoreP(n1,1);
-        System.out.println("Se Genero 1  P  en la posicon " + n1);
+        // ---System.out.println("Se Genero 1  P  en la posicon " + n1);
         addP();
                
     
@@ -113,12 +113,12 @@ public class ProdParabrisas extends Thread{
             if(n2==24)
             {
                 n2=0;
-            System.out.println(" veintinueve");
+           // --- System.out.println(" veintinueve");
             
             }
             
             almacen.setStoreP(n2,0);
-           System.out.println("Se le quito 1 parabrisas en la posicion: "+ n2);
+          // -- System.out.println("Se le quito 1 parabrisas en la posicion: "+ n2);
             n2++;
             
             
@@ -126,6 +126,10 @@ public class ProdParabrisas extends Thread{
             Logger.getLogger(ProdMotor.class.getName()).log(Level.SEVERE, null, ex);
         }
    
+    }
+
+    public static int getContract() {
+        return contract;
     }
 
 
